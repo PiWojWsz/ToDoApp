@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css} "/>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">ToDo List</h1>
+        <hr/>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Actions</th>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Completed</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${toDoList}">
+                    <td>
+                        <div class="btn btn-group-sm" role="group">
+                            <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">Edit</a>
+                            <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Delete</a>
+                        </div>
+                    </td>
+                    <td th:text="${item.id}">[[${item.id}]]</td>
+                    <td th:text="${item.description}">item_desc</td>
+                    <td th:text="${item.complete}">item_complete</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+</body>
+</html>
