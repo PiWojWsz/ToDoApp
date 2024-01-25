@@ -23,7 +23,11 @@
                     <td>
                         <div class="btn btn-group-sm" role="group">
                             <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">Edit</a>
-                            <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Delete</a>
+                            <form action="#" th:action="@{/delete/{id}(id=${item.id})}" th:method="delete" >
+                                <input type="hidden" name="_method" value="delete" />
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+
                         </div>
                     </td>
                     <td th:text="${item.id}">[[${item.id}]]</td>
@@ -32,6 +36,8 @@
                 </tr>
             </tbody>
         </table>
+        <p><a class="btn btn-success" href="/create">Add item</a></p>
+        <p><a class="btn btn-warning" href="/logout">Logout</a></p>
     </div>
     <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
